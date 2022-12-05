@@ -1,0 +1,102 @@
+1.
+
+def meme_sum(a,b):
+    a = str(a)
+    b = str(b)
+    sum1 = ''
+    
+    while True:
+        if len(a) < len(b):
+            a = '0'+a
+        elif len(b) < len(a):
+            b = '0'+b
+        else:
+            break
+    
+    for i in range(len(a)):
+        sum1 += str(int(a[i]) + int(b[i]))
+
+    return sum1
+
+print(meme_sum(26, 39))
+print(meme_sum(122,81))
+print(meme_sum(1222, 30277))
+print(meme_sum(10,203))
+
+
+2.
+
+def prime_num(n):
+    for i in range(2,n):
+        if n % i == 0:
+            break
+    else:
+        return n
+        
+def next_prime(n):
+    while True:
+        if prime_num(n) != None:
+            break
+        n = n + 1
+        prime_num(n)
+    
+    return prime_num(n)    
+            
+print(next_prime(12))
+print(next_prime(24))
+print(next_prime(11))
+print(next_prime(83))
+
+
+3.
+
+# as distance is same, formula  is  2ab/a+b where a and b are two speeds
+
+def ave_spd(uphill_time, uphill_rate, downhill_rate):
+    return int(2 * uphill_rate * downhill_rate/ (uphill_rate + downhill_rate))
+
+print(ave_spd(18, 20, 60))
+print(ave_spd(30, 10, 30))
+print(ave_spd(30,8,24))
+
+
+4.
+
+#n = 6
+
+def fact(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fact(n-1)
+        
+def kempner(n):
+    for i in range(1,n+1):
+        if fact(i) % n == 0:
+            return i
+
+print(kempner(6))
+print(kempner(10))
+print(kempner(2))
+
+
+5.
+
+
+def boxes(l):
+    l1 =[]
+    box =[]
+    
+    for i in l:
+        box.append(i)
+        if sum(box) > 10:
+            box.pop()
+            l1.append(box)
+            box = []
+            box.append(i)
+            
+    l1.append(box)
+    return l1    
+
+print(boxes([2, 1, 2, 5, 4, 3, 6, 1, 1, 9, 3, 2]))
+print(boxes([5,1,3,6,8,2,3,1,4,2,5,6,10]))
